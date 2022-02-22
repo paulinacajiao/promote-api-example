@@ -1,0 +1,52 @@
+#%RAML 1.0
+title: API Example
+
+ 
+
+traits: 
+  client-id-required:
+    headers: 
+      client_id:
+        type: string
+      client_secret:
+        type: string
+
+
+/users:
+   is: [client-id-required]
+   post:
+    displayName: New User
+    body:
+      application/json:
+       example: !include examples/UsersExample.json
+          
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+              {
+                "status" : "OK"
+              }
+  
+ 
+   get:
+     displayName: Retrieve User
+     queryParameters:
+       from: string
+       to: string
+     responses:
+       200:
+         body:
+          application/json:
+
+    
+   /{id}:
+      is: [client-id-required]
+      get:
+        displayName: Get User by userID
+        responses:
+          200:
+            body:
+             application/json:
+              example: !include examples/UsersExample.json

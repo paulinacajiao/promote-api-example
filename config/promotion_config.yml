@@ -1,0 +1,15 @@
+Config:
+  Organisation: "Paulina Cajiao"
+  SourceEnvName: "Sandbox"
+  SourceServerName: "Sandbox"
+  SourceServerType: "SERVER"
+  TargetEnvName: "Production"
+  TargetServerName: "Production"
+  TargetServerType: "SERVER"
+  Applications:
+    - appName: "http-proxy-v1"
+      apiInstanceId: 16748960
+      proxyurl: http://newurlproxy.com
+    #- appName: "usersapi"
+    #  apiInstanceId: 322618
+    #  proxyurl: http://newurlproxy.com
