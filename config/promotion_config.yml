@@ -2,10 +2,10 @@ Config:
   Organisation: "Paulina Cajiao"
   SourceEnvName: "Sandbox"
   SourceServerName: "Sandbox"
-  SourceServerType: "SERVER"
+  SourceServerType: "CH"
   TargetEnvName: "Production"
   TargetServerName: "Production"
-  TargetServerType: "SERVER"
+  TargetServerType: "CH"
   Applications:
     - appName: "http-proxy-v1-api-gateway"
       apiInstanceId: 16748960

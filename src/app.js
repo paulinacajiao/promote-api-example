@@ -23,7 +23,7 @@ var anypointInfo = {};
 var arg = Utility.getArgument(); //validate argument
 
 //access environment variable
-console.log('User: "' + process.env.ANYPOINT_USER + '" is connecting to anypoint');
+console.log('User: "' + process.env.ANYPOINT_PLATFORM_CREDS_USR + '" is connecting to anypoint');
 
 //main logic
 if(arg == Utility.APP_ONLY_PARAM) {
