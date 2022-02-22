@@ -7,7 +7,7 @@ Config:
   TargetServerName: "Production"
   TargetServerType: "SERVER"
   Applications:
-    - appName: "http-proxy-v1"
+    - appName: "http-proxy-v1-api-gateway"
       apiInstanceId: 16748960
       proxyurl: http://newurlproxy.com
     #- appName: "usersapi"

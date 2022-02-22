@@ -25,7 +25,7 @@ pipeline  {
     	stage('Promote APIs and Applications') {
         
             steps { 
-                git branch: 'main', credentialsId: 'GITToken', url: 'https://github.com/mulesoft-consulting/intesa_san_paolo_poc.git'
+                git branch: 'master', credentialsId: 'GITToken', url: 'https://github.com/paulinacajiao/promote-api-example.git'
                 sh 'node src/app.js' 
             }
         }
