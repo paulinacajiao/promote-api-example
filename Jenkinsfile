@@ -13,7 +13,7 @@ pipeline  {
     }
     
     tools {
-        nodejs 'NodeJs 15.01'
+        nodejs 'NodeJs 17.5.0'
     }
 
 

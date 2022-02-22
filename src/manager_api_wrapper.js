@@ -27,7 +27,7 @@ function promoteApi(apiId, anypointInfo, proxyurl) {
 
 		Req.post({
 			"headers": {"content-type": "application/json", "Authorization": anypointInfo.token}, 
-			"url": "https://eu1.anypoint.mulesoft.com/apimanager/api/v1/organizations/" + anypointInfo.orgId +
+			"url": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/" + anypointInfo.orgId +
 				"/environments/" + anypointInfo.targetEnvId + "/apis",
 			"body": JSON.stringify(
 				{"promote":{
@@ -68,7 +68,7 @@ function patchApi(apiId, anypointInfo, proxyurl) {
 		console.log("Patch API: " , apiId );
 		Req.patch({
 			"headers": {"content-type": "application/json", "Authorization": anypointInfo.token}, 
-			"url": "https://eu1.anypoint.mulesoft.com/apimanager/api/v1/organizations/" + anypointInfo.orgId +
+			"url": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/" + anypointInfo.orgId +
 				"/environments/" + anypointInfo.targetEnvId + "/apis/" + apiId,
 			"body": JSON.stringify(
 				{"endpoint":{

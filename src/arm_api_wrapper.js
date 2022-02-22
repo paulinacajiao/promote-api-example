@@ -12,7 +12,7 @@ function getApplications(token, orgId, envId, applicationsFromConfig) {
 
 		Req.get({
 			"headers": {"content-type": "application/json", "Authorization": token, "X-ANYPNT-ORG-ID": orgId, "X-ANYPNT-ENV-ID": envId}, 
-			"url": "https://eu1.anypoint.mulesoft.com/hybrid/api/v1/applications"
+			"url": "https://anypoint.mulesoft.com/hybrid/api/v1/applications"
 		}, (error, response, body) => {
 		    if(error) {
 		    	reject(error);
@@ -49,7 +49,7 @@ function getServer(token, orgId, envId, serverName) {
 	return new Promise(function(resolve, reject) {
 		Req.get({
 			"headers": {"Authorization": token, "X-ANYPNT-ORG-ID": orgId, "X-ANYPNT-ENV-ID": envId}, 
-			"url": "https://eu1.anypoint.mulesoft.com/hybrid/api/v1/servers"
+			"url": "https://anypoint.mulesoft.com/hybrid/api/v1/servers"
 		}, (error, response, body) => {
 		    if(error) {
 		    	reject(error);
@@ -75,7 +75,7 @@ function getCluster(token, orgId, envId, clusterName) {
 	return new Promise(function(resolve, reject) {
 		Req.get({
 			"headers": {"Authorization": token, "X-ANYPNT-ORG-ID": orgId, "X-ANYPNT-ENV-ID": envId}, 
-			"url": "https://eu1.anypoint.mulesoft.com/hybrid/api/v1/clusters"
+			"url": "https://anypoint.mulesoft.com/hybrid/api/v1/clusters"
 		}, (error, response, body) => {
 		    if(error) {
 		    	reject(error);
@@ -141,7 +141,7 @@ function getApplicationId(token, orgId, envId, appName) {
 	return new Promise(function(resolve, reject) {
 		Req.get({
 			"headers": {"content-type": "application/json", "Authorization": token, "X-ANYPNT-ORG-ID": orgId, "X-ANYPNT-ENV-ID": envId}, 
-			"url": "https://eu1.anypoint.mulesoft.com/hybrid/api/v1/applications"
+			"url": "https://anypoint.mulesoft.com/hybrid/api/v1/applications"
 		}, (error, response, body) => {
 		    if(error) {
 		    	reject(error);
@@ -192,7 +192,7 @@ function updateAppOnTarget(token, orgId, envId, appIdToBeUpdated, sourceAppId, t
 		    "headers": { "content-type": "application/json", "Authorization": token, 
 		    	"X-ANYPNT-ORG-ID": orgId, "X-ANYPNT-ENV-ID": envId
 			},
-		    "url": "https://eu1.anypoint.mulesoft.com/hybrid/api/v1/applications/"+appIdToBeUpdated+"/artifact",
+		    "url": "https://anypoint.mulesoft.com/hybrid/api/v1/applications/"+appIdToBeUpdated+"/artifact",
 		    "body": JSON.stringify(body)
 		}, (error, response, body) => {
 			if(error) {
@@ -216,7 +216,7 @@ function deployToTarget(token, orgId, envId, appId, targetId, appName, apiInstan
 		    "headers": { "content-type": "application/json", "Authorization": token, 
 		    	"X-ANYPNT-ORG-ID": orgId, "X-ANYPNT-ENV-ID": envId
 			},
-		    "url": "https://eu1.anypoint.mulesoft.com/hybrid/api/v1/applications",
+		    "url": "https://anypoint.mulesoft.com/hybrid/api/v1/applications",
 		    "body": JSON.stringify({
 		        "applicationSource": {"source": "HYBRID", "id": appId},
 		        "targetId": targetId,
@@ -248,7 +248,7 @@ function undeployApplication(token, orgId, envId, appId) {
 
 		Req.delete({
 			"headers": {"content-type": "application/json", "Authorization": token, "X-ANYPNT-ORG-ID": orgId, "X-ANYPNT-ENV-ID": envId}, 
-			"url": "https://eu1.anypoint.mulesoft.com/hybrid/api/v1/applications/"+appId
+			"url": "https://anypoint.mulesoft.com/hybrid/api/v1/applications/"+appId
 		}, (error, response, body) => {
 		    if(error) {
 		    	reject(error);

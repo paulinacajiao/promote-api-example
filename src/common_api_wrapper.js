@@ -66,7 +66,7 @@ function login() {
 	return new Promise(function(resolve, reject) {
 		Req.post({
 		    "headers": { "content-type": "application/json" },
-		    "url": "https://eu1.anypoint.mulesoft.com/accounts/login",
+		    "url": "https://anypoint.mulesoft.com/accounts/login",
 		    "body": JSON.stringify({
 		        "username": process.env.ANYPOINT_PLATFORM_CREDS_USR,
 		        "password": process.env.ANYPOINT_PLATFORM_CREDS_PSW
@@ -94,7 +94,7 @@ function getOrgId(token, organisationName) {
 	return new Promise(function(resolve, reject) {
 		Req.get({
 			"headers": {"Authorization": token}, 
-			"url": "https://eu1.anypoint.mulesoft.com/accounts/api/me"
+			"url": "https://anypoint.mulesoft.com/accounts/api/me"
 		}, (error, response, body) => {
 		    if(error) {
 		    	reject(error);
@@ -117,7 +117,7 @@ function getEnvironments(token, orgId, targetEnvName, sourceEnvName) {
 	return new Promise(function(resolve, reject) {
 		Req.get({
 			"headers": {"Authorization": token}, 
-			"url": "https://eu1.anypoint.mulesoft.com/accounts/api/organizations/"+orgId+"/environments"
+			"url": "https://anypoint.mulesoft.com/accounts/api/organizations/"+orgId+"/environments"
 		}, (error, response, body) => {
 		    if(error) {
 		    	reject(error);
