@@ -44,12 +44,12 @@ function getAnypointInfo(targetEnvName, sourceEnvName, sourceType, sourceName, t
 
 			//return Promise.all(promiseArray);
 		})
-		.then(([runtimeTargetId, runtimeSourceId]) => {
-	    		console.log("Runtime Source ID: " + runtimeSourceId + "\nRuntime Target ID: " + runtimeTargetId);
-	    		anypointInfo.runtimeTargetId = runtimeTargetId;
-	    		anypointInfo.runtimeSourceId = runtimeSourceId;
-	    		resolve(anypointInfo);
-		})
+		//.then(([runtimeTargetId, runtimeSourceId]) => {
+	    //		console.log("Runtime Source ID: " + runtimeSourceId + "\nRuntime Target ID: " + runtimeTargetId);
+	    //		anypointInfo.runtimeTargetId = runtimeTargetId;
+	    //		anypointInfo.runtimeSourceId = runtimeSourceId;
+	    //		resolve(anypointInfo);
+		//})
 		.catch(err => {
 			console.log("Error: " + err);
 			//reject(error);

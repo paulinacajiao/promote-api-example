@@ -7,9 +7,9 @@ Config:
   TargetServerName: "production"
   TargetServerType: "CH"
   Applications:
-    - appName: "http-proxy-v1-api-gateway"
+    - appName: "http-proxy-v1"
       apiInstanceId: 16748960
-      proxyurl: http://newurlproxy.com
+      proxyurl: http-proxy-v1.us-e2.cloudhub.io
     #- appName: "usersapi"
     #  apiInstanceId: 322618
     #  proxyurl: http://newurlproxy.com

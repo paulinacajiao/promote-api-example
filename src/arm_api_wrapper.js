@@ -41,6 +41,40 @@ function getApplications(token, orgId, envId, applicationsFromConfig) {
 	});
 }
 
+function getApplicationsCloudhub(token, orgId, envId, applicationsFromConfig) {
+	return new Promise(function(resolve, reject) {
+
+		Req.get({
+			"headers": {"content-type": "application/json", "Authorization": token, "X-ANYPNT-ENV-ID": envId}, 
+			"url": "https://anypoint.mulesoft.com/cloudhub/api/v2/applications"
+		}, (error, response, body) => {
+		    if(error) {
+		    	reject(error);
+		    } else {
+			    var jsonBody = JSON.parse(body);
+				console.log("Application: " ,jsonBody) ;
+				console.log("applicationsFromConfig: " ,applicationsFromConfig) ;
+				var applicationsToBePromoted = [];
+				
+			    applicationsFromConfig.forEach(function(app) {
+					var application = jsonBody.data.find(function(item) {
+		  				return item.name == app.appName;
+					});
+					console.log("Application to Promote " ,application) ;
+					applicationsToBePromoted.push({
+						"appName": app.appName,
+						"appId": application.id,
+						"apiInstanceId": app.apiInstanceId});
+				});
+			    
+				resolve(applicationsToBePromoted);
+		    }
+
+		});
+
+	});
+}
+
 /*
  * Retrieves server ID by server name for provided environment.
  * Promise is used to merge responses from asynchronous calls.

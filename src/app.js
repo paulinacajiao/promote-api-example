@@ -1,5 +1,5 @@
 
-console.log('------ Promotion has started ------');
+
 
 //used libs
 const Utility = require('./utility');
@@ -39,7 +39,7 @@ if(arg == Utility.APP_ONLY_PARAM) {
  * Triggers API promotion logic. Implements the whole integration flow.
  */
 function runApiPromotion() {
-
+	console.log('------ API and application Promotion has started ------');
 	Common.getAnypointInfo(TARGET_ENV_NAME, SOURCE_ENV_NAME, SOURCE_TYPE, SOURCE_NAME, 
 		TARGET_TYPE, TARGET_NAME, ORGANISATION)	
 	.then((anyInfo) => {
@@ -67,7 +67,7 @@ function runApiPromotion() {
  * Triggers API promotion logic. Implements the whole integration flow.
  */
 function runOnlyApiPromotion() {
-
+	console.log('------ API Only Promotion has started ------');
 	Common.getAnypointInfo(TARGET_ENV_NAME, SOURCE_ENV_NAME, SOURCE_TYPE, SOURCE_NAME, 
 		TARGET_TYPE, TARGET_NAME, ORGANISATION)	
 	.then((anyInfo) => {
@@ -98,7 +98,7 @@ function runOnlyApiPromotion() {
  * together with application.
  */
 function runApplicationPromotion(apiInstances) {
-
+	console.log('------ Application Promotion has started ------');
 	Common.getAnypointInfo(TARGET_ENV_NAME, SOURCE_ENV_NAME, SOURCE_TYPE, SOURCE_NAME, 
 		TARGET_TYPE, TARGET_NAME, ORGANISATION)	
 	.then((anyInfo) => {
