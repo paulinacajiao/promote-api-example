@@ -52,7 +52,7 @@ function getAnypointInfo(targetEnvName, sourceEnvName, sourceType, sourceName, t
 		})
 		.catch(err => {
 			console.log("Error: " + err);
-			reject(error);
+			//reject(error);
 		});
 
 	});
