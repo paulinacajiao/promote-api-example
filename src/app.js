@@ -27,7 +27,7 @@ console.log('User: "' + process.env.ANYPOINT_PLATFORM_CREDS_USR + '" is connecti
 
 //main logic
 if(arg == Utility.APP_ONLY_PARAM) {
-	runApplicationPromotion();
+	 ();
 } if(arg == Utility.API_ONLY_PARAM) {
 	runOnlyApiPromotion();
 } else  {

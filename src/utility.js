@@ -4,7 +4,7 @@ const Arm = require('./arm_api_wrapper');
 
 const CONFIG_FILE = "config/promotion_config.yml";
 const TYPE_SERVER_CONST = "SERVER";
-const TYPE_CLUSTER_CONST = "CLUSTER";
+const TYPE_CLUSTER_CONST = "SERVER";
 
 const SOURCE_ENV_ID = "SOURCE_ENV_ID";
 const TARGET_ENV_ID = "TARGET_ENV_ID";
