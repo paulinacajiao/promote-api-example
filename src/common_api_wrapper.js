@@ -39,10 +39,10 @@ function getAnypointInfo(targetEnvName, sourceEnvName, sourceType, sourceName, t
 		.then((envs) => {
 			anypointInfo.sourceEnvId = envs[0][Utility.SOURCE_ENV_ID]; //save for use by other calls
 			anypointInfo.targetEnvId = envs[1][Utility.TARGET_ENV_ID]; //save for use by other calls
-			var promiseArray = Utility.definePromisesToGetTargetAndSourceRuntime(anypointInfo.token, anypointInfo.orgId, 
-				targetType, targetName, anypointInfo.targetEnvId, sourceType, sourceName, anypointInfo.sourceEnvId);
+			//var promiseArray = Utility.definePromisesToGetTargetAndSourceRuntime(anypointInfo.token, anypointInfo.orgId, 
+			//	targetType, targetName, anypointInfo.targetEnvId, sourceType, sourceName, anypointInfo.sourceEnvId);
 
-			return Promise.all(promiseArray);
+			//return Promise.all(promiseArray);
 		})
 		.then(([runtimeTargetId, runtimeSourceId]) => {
 	    		console.log("Runtime Source ID: " + runtimeSourceId + "\nRuntime Target ID: " + runtimeTargetId);
