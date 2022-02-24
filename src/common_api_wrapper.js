@@ -4,6 +4,8 @@
 
 const Req = require("request");
 const Utility = require('./utility');
+//const ANYPOINT_PLATFORM_CREDS_USR = "";
+//const ANYPOINT_PLATFORM_CREDS_PSW = "" ;
 
 var anypointInfo = {
     token:"", //token retrieved by authentication
@@ -39,17 +41,17 @@ function getAnypointInfo(targetEnvName, sourceEnvName, sourceType, sourceName, t
 		.then((envs) => {
 			anypointInfo.sourceEnvId = envs[0][Utility.SOURCE_ENV_ID]; //save for use by other calls
 			anypointInfo.targetEnvId = envs[1][Utility.TARGET_ENV_ID]; //save for use by other calls
-			//var promiseArray = Utility.definePromisesToGetTargetAndSourceRuntime(anypointInfo.token, anypointInfo.orgId, 
-			//	targetType, targetName, anypointInfo.targetEnvId, sourceType, sourceName, anypointInfo.sourceEnvId);
-
-			//return Promise.all(promiseArray);
+		//	var promiseArray = Utility.definePromisesToGetTargetAndSourceRuntime(anypointInfo.token, anypointInfo.orgId, 
+		//		targetType, targetName, anypointInfo.targetEnvId, sourceType, sourceName, anypointInfo.sourceEnvId);
+		var promiseArray = [anypointInfo.targetEnvId, anypointInfo.sourceEnvId] ;
+			return Promise.all(promiseArray);
 		})
-		//.then(([runtimeTargetId, runtimeSourceId]) => {
-	    //		console.log("Runtime Source ID: " + runtimeSourceId + "\nRuntime Target ID: " + runtimeTargetId);
-	    //		anypointInfo.runtimeTargetId = runtimeTargetId;
-	    //		anypointInfo.runtimeSourceId = runtimeSourceId;
-	    //		resolve(anypointInfo);
-		//})
+		.then(([runtimeTargetId, runtimeSourceId]) => {
+	    		console.log("Runtime Source ID: " + runtimeSourceId + "\nRuntime Target ID: " + runtimeTargetId);
+	    		anypointInfo.runtimeTargetId = runtimeTargetId;
+	    		anypointInfo.runtimeSourceId = runtimeSourceId;
+	    		resolve(anypointInfo);
+		})
 		.catch(err => {
 			console.log("Error: " + err);
 			//reject(error);
@@ -68,8 +70,10 @@ function login() {
 		    "headers": { "content-type": "application/json" },
 		    "url": "https://anypoint.mulesoft.com/accounts/login",
 		    "body": JSON.stringify({
-		        "username": process.env.ANYPOINT_PLATFORM_CREDS_USR,
+		       "username": process.env.ANYPOINT_PLATFORM_CREDS_USR,
 		        "password": process.env.ANYPOINT_PLATFORM_CREDS_PSW
+		     //	"username": ANYPOINT_PLATFORM_CREDS_USR,
+		     //   "password": ANYPOINT_PLATFORM_CREDS_PSW
 
 		    })
 		}, (error, response, body) => {

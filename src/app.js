@@ -1,5 +1,5 @@
 
-
+console.log('------ Promotion has started ------');
 
 //used libs
 const Utility = require('./utility');
@@ -17,6 +17,12 @@ const TARGET_NAME = CONFIG.Config.TargetServerName;
 const SOURCE_NAME = CONFIG.Config.SourceServerName;
 const ORGANISATION = CONFIG.Config.Organisation;
 const APPLICATIONS = CONFIG.Config.Applications; //applications to be promoted (ARM)
+const TargetClientId = CONFIG.Config.TargetClientId ;
+const TargetClientSecret = CONFIG.Config.TargetClientSecret ;
+
+
+//const ANYPOINT_PLATFORM_CREDS_USR = "";
+//const ANYPOINT_PLATFORM_CREDS_PSW = "" ;
 
 var anypointInfo = {};
 
@@ -24,6 +30,8 @@ var arg = Utility.getArgument(); //validate argument
 
 //access environment variable
 console.log('User: "' + process.env.ANYPOINT_PLATFORM_CREDS_USR + '" is connecting to anypoint');
+
+
 
 //main logic
 if(arg == Utility.APP_ONLY_PARAM) {
@@ -39,7 +47,7 @@ if(arg == Utility.APP_ONLY_PARAM) {
  * Triggers API promotion logic. Implements the whole integration flow.
  */
 function runApiPromotion() {
-	console.log('------ API and application Promotion has started ------');
+
 	Common.getAnypointInfo(TARGET_ENV_NAME, SOURCE_ENV_NAME, SOURCE_TYPE, SOURCE_NAME, 
 		TARGET_TYPE, TARGET_NAME, ORGANISATION)	
 	.then((anyInfo) => {
@@ -67,7 +75,7 @@ function runApiPromotion() {
  * Triggers API promotion logic. Implements the whole integration flow.
  */
 function runOnlyApiPromotion() {
-	console.log('------ API Only Promotion has started ------');
+
 	Common.getAnypointInfo(TARGET_ENV_NAME, SOURCE_ENV_NAME, SOURCE_TYPE, SOURCE_NAME, 
 		TARGET_TYPE, TARGET_NAME, ORGANISATION)	
 	.then((anyInfo) => {
@@ -98,7 +106,7 @@ function runOnlyApiPromotion() {
  * together with application.
  */
 function runApplicationPromotion(apiInstances) {
-	console.log('------ Application Promotion has started ------');
+
 	Common.getAnypointInfo(TARGET_ENV_NAME, SOURCE_ENV_NAME, SOURCE_TYPE, SOURCE_NAME, 
 		TARGET_TYPE, TARGET_NAME, ORGANISATION)	
 	.then((anyInfo) => {
@@ -114,7 +122,7 @@ function runApplicationPromotion(apiInstances) {
 
     		return Arm.redeployApplication(anypointInfo.token, anypointInfo.orgId, 
     			anypointInfo.targetEnvId, anypointInfo.runtimeTargetId, 
-    			application.appName, application.appId, application.apiInstanceId, apiInstances);
+    			application.appName, application.appId, application.apiInstanceId, apiInstances, anypointInfo.sourceEnvId,  application.fileName, application.fileSource, application.fileHash, TargetClientId, TargetClientSecret );
 
 		}));
 	})
